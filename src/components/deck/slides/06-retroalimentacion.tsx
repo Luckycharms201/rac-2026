@@ -17,8 +17,7 @@ const COMENTARIOS = [
  *
  * Los comentarios van como burbujas de chat, todas del mismo lado: son tres
  * voces de egresados, y alternar lados haría leer una conversación entre dos
- * partes que no existe. La burbuja es el entrecomillado, por eso el texto va
- * sin comillas.
+ * partes que no existe.
  *
  * El ancho lo pone la columna (`max-w-[42cqw]`), no cada burbuja: los tres
  * comentarios son largos y envuelven, así que en la práctica las tres llegan
@@ -57,7 +56,7 @@ export function Retroalimentacion() {
                 className="w-fit rounded-[1.8cqw] rounded-bl-[0.4cqw] border border-white/12 bg-white/[0.07] px-[2.2cqw] py-[1.9cqh] text-pretty font-light leading-[1.45] text-[color:color-mix(in_oklab,var(--rac-mist)_92%,transparent)] backdrop-blur-xl text-[clamp(.72rem,1.45cqw,1.5rem)]"
                 style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,.14)" }}
               >
-                {comentario}
+                “{comentario}”
               </p>
             </RevealItem>
           ))}

@@ -13,7 +13,7 @@ const COMENTARIOS = [
 ];
 
 /**
- * Slide 6 — Retroalimentación RAC 2025.
+ * Slide 5 — Retroalimentación RAC 2025.
  *
  * Los comentarios van como burbujas de chat, todas del mismo lado: son tres
  * voces de egresados, y alternar lados haría leer una conversación entre dos

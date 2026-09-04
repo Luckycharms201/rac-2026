@@ -4,8 +4,8 @@ import Cover from "@/components/deck/slides/01-cover";
 import QueEs from "@/components/deck/slides/02-que-es";
 import Proposito from "@/components/deck/slides/03-proposito";
 import Fechas from "@/components/deck/slides/04-fechas";
-import Momentos from "@/components/deck/slides/05-momentos";
-import Retroalimentacion from "@/components/deck/slides/06-retroalimentacion";
+import Retroalimentacion from "@/components/deck/slides/05-retroalimentacion";
+import Momentos from "@/components/deck/slides/06-momentos";
 import Propuesta from "@/components/deck/slides/07-propuesta";
 import Agenda from "@/components/deck/slides/08-agenda";
 import Cierre from "@/components/deck/slides/09-cierre";
@@ -40,7 +40,7 @@ export const SLIDES: SlideEntry[] = [
   },
   {
     id: "que-es",
-    title: "¿Qué es Regreso a Casa?",
+    title: "Regreso a Casa",
     photoIds: [QUE_ES_PHOTO.id],
     Component: QueEs,
   },
@@ -57,16 +57,16 @@ export const SLIDES: SlideEntry[] = [
     Component: Fechas,
   },
   {
-    id: "momentos",
-    title: "Momentos clave",
-    photoIds: [],
-    Component: Momentos,
-  },
-  {
     id: "retroalimentacion",
     title: "Retroalimentación RAC 2025",
     photoIds: [RETRO_PHOTO.id],
     Component: Retroalimentacion,
+  },
+  {
+    id: "momentos",
+    title: "Momentos clave",
+    photoIds: [],
+    Component: Momentos,
   },
   {
     id: "propuesta",

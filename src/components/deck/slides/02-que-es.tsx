@@ -5,7 +5,7 @@ import { Lead, SlideTitle } from "@/components/deck/typography";
 import { QUE_ES_PHOTO } from "@/data/photos";
 
 /**
- * Slide 2 — ¿Qué es Regreso a Casa?
+ * Slide 2 — Regreso a Casa (qué es).
  * La foto ocupa el lado derecho completo, de borde a borde, y se desvanece
  * hacia el texto. El párrafo dejó de ir centrado a propósito — centrado
  * junto a un panel de foto se lee como dos piezas sueltas.
@@ -23,8 +23,8 @@ export function QueEs() {
         className="flex h-full w-full max-w-[40cqw] flex-col justify-center"
       >
         <RevealItem>
-          <SlideTitle className="text-[clamp(1.9rem,5.4cqw,5.4rem)] leading-[0.98]">
-            ¿Qué es Regreso a Casa?
+          <SlideTitle className="text-[clamp(2.1rem,6cqw,6rem)] leading-[0.95]">
+            Regreso a Casa
           </SlideTitle>
         </RevealItem>
 

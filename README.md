@@ -64,9 +64,9 @@ Grupos de fotos en el manifiesto:
 | Constante | Slide | Qué es |
 | --- | --- | --- |
 | `COVER_PHOTOS` | 1 · Portada | 12 imágenes del corredor 3D |
-| `QUE_ES_PHOTO` | 2 · ¿Qué es…? | 1 foto vertical, panel a altura completa |
+| `QUE_ES_PHOTO` | 2 · Regreso a Casa | 1 foto vertical, panel a altura completa |
 | `PROPOSITO_PHOTO` | 3 · Propósito | 1 foto vertical, panel a altura completa |
-| `RETRO_PHOTO` | 6 · Retroalimentación | 1 foto vertical, panel a altura completa |
+| `RETRO_PHOTO` | 5 · Retroalimentación | 1 foto vertical, panel a altura completa |
 | `CIERRE_PHOTO` | 9 · Cierre | 1 foto de fondo a toda la lámina |
 
 **Total: 16 fotos.** Las 12 de la portada llenan los dos rieles del corredor —

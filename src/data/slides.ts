@@ -15,6 +15,7 @@ import {
   COVER_PHOTOS,
   PROPOSITO_PHOTO,
   QUE_ES_PHOTO,
+  RETRO_PHOTO,
 } from "@/data/photos";
 
 export type SlideEntry = {
@@ -64,7 +65,7 @@ export const SLIDES: SlideEntry[] = [
   {
     id: "retroalimentacion",
     title: "Retroalimentación RAC 2025",
-    photoIds: [],
+    photoIds: [RETRO_PHOTO.id],
     Component: Retroalimentacion,
   },
   {

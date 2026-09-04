@@ -53,6 +53,12 @@ export const PROPOSITO_PHOTO: Photo = {
   ratio: "4/5",
 };
 
+export const RETRO_PHOTO: Photo = {
+  id: "retro-principal",
+  label: "Egresados conviviendo en RAC 2025",
+  ratio: "4/5",
+};
+
 /* ── Slide 8: Cierre ──────────────────────────────────────────
  * Una sola foto, de fondo a toda la lámina y bajo el overlay de color.
  * Elige una toma abierta: el texto va encima y centrado, así que el
@@ -68,6 +74,7 @@ export const PHOTOS: readonly Photo[] = [
   ...COVER_PHOTOS,
   QUE_ES_PHOTO,
   PROPOSITO_PHOTO,
+  RETRO_PHOTO,
   CIERRE_PHOTO,
 ];
 

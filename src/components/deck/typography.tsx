@@ -74,30 +74,3 @@ export function Eyebrow({
     </span>
   );
 }
-
-/** Estrella de cuatro puntas del arte original, con degradado azul. */
-export function FourPointStar({
-  className,
-  gradientId = "rac-star",
-}: {
-  className?: string;
-  gradientId?: string;
-}) {
-  return (
-    <svg viewBox="0 0 100 100" aria-hidden className={className}>
-      <defs>
-        <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="var(--rac-sky)" />
-          <stop offset="55%" stopColor="var(--rac-azure)" />
-          <stop offset="100%" stopColor="var(--rac-blue)" />
-        </linearGradient>
-      </defs>
-      {/* Cuatro puntas cóncavas: los controles se van al centro, que es
-       * lo que le da el talle delgado del asterisco original. */}
-      <path
-        fill={`url(#${gradientId})`}
-        d="M50 0C52 27 73 48 100 50 73 52 52 73 50 100 48 73 27 52 0 50 27 48 48 27 50 0Z"
-      />
-    </svg>
-  );
-}

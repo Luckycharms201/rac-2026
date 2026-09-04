@@ -28,6 +28,12 @@ export type SlideShellProps = {
   grain?: number | false;
   /** Quita el padding estándar (la portada lo necesita a sangre). */
   bleed?: boolean;
+  /**
+   * Capa a sangre entre el haz de luz y el contenido: paneles de foto que
+   * llegan al borde del slide, ignorando el padding. La viñeta y el grano
+   * siguen pasando por encima, que es lo que la integra con la lámina.
+   */
+  backdrop?: React.ReactNode;
   /** Clases del contenedor de contenido. */
   className?: string;
   children: React.ReactNode;
@@ -45,6 +51,7 @@ export function SlideShell({
   vignette = 0.55,
   grain = 0.045,
   bleed = false,
+  backdrop,
   className,
   children,
 }: SlideShellProps) {
@@ -53,6 +60,12 @@ export function SlideShell({
   return (
     <div className={cn("absolute inset-0 overflow-hidden", TONES[tone])}>
       {beam ? <LightBeam {...beam} /> : null}
+
+      {backdrop ? (
+        <div className="pointer-events-none absolute inset-0 z-[5]">
+          {backdrop}
+        </div>
+      ) : null}
 
       <div
         className={cn(

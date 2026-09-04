@@ -13,6 +13,12 @@ export type PhotoProps = {
    * altura completa, donde manda el hueco y no la proporción del archivo.
    */
   fill?: boolean;
+  /**
+   * Desvanece la foto hacia ese lado con una máscara alpha, de modo que se
+   * funde con el fondo real del slide en vez de contra un color plano.
+   * Los otros tres lados quedan a filo: la foto sangra hasta el borde.
+   */
+  fade?: "left" | "right";
   /** Desactiva el lazy loading: úsalo en el slide visible. */
   priority?: boolean;
   /** Se muestra el label sobre el placeholder. @default true */
@@ -21,6 +27,18 @@ export type PhotoProps = {
   /** Clases para el <img> / relleno interno. */
   imgClassName?: string;
 };
+
+/* Máscara del desvanecido. Va sobre la foto, no sobre un degradado de color
+ * encima: así lo que asoma es el fondo real del slide —haz de luz incluido—
+ * y el panel se funde de verdad en vez de aclararse contra un negro plano. */
+function fadeMask(side: "left" | "right"): React.CSSProperties {
+  const direction = side === "left" ? "to right" : "to left";
+  const gradient = `linear-gradient(${direction}, rgba(0,0,0,0) 0%, rgba(0,0,0,0.22) 12%, rgba(0,0,0,0.72) 30%, rgba(0,0,0,1) 52%)`;
+  return {
+    maskImage: gradient,
+    WebkitMaskImage: gradient,
+  };
+}
 
 /**
  * Un hueco de foto. Con `src` en el manifiesto renderiza la imagen; sin
@@ -31,6 +49,7 @@ export function Photo({
   id,
   ratio,
   fill = false,
+  fade,
   priority = false,
   showLabel = true,
   className,
@@ -46,7 +65,10 @@ export function Photo({
         fill && "h-full w-full",
         className,
       )}
-      style={fill ? undefined : { aspectRatio: aspect }}
+      style={{
+        ...(fill ? undefined : { aspectRatio: aspect }),
+        ...(fade ? fadeMask(fade) : undefined),
+      }}
     >
       {photo.src ? (
         <img
@@ -63,6 +85,7 @@ export function Photo({
           id={id}
           label={photo.label}
           showLabel={showLabel}
+          fade={fade}
           className={imgClassName}
         />
       )}
@@ -74,6 +97,7 @@ type PhotoPlaceholderProps = {
   id: string;
   label: string;
   showLabel: boolean;
+  fade?: "left" | "right";
   className?: string;
 };
 
@@ -81,6 +105,7 @@ function PhotoPlaceholder({
   id,
   label,
   showLabel,
+  fade,
   className,
 }: PhotoPlaceholderProps) {
   const tones = React.useMemo(() => placeholderTones(id), [id]);
@@ -103,7 +128,17 @@ function PhotoPlaceholder({
       />
       <Grain opacity={0.06} className="z-0" />
 
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-[4%] px-[8%] text-center">
+      {/* Con máscara, el centro geométrico del panel cae dentro de la zona
+       * ya desvanecida. El padding empuja el ícono y el label al centro de
+       * la parte que de verdad se ve. Sólo afecta al placeholder: una foto
+       * real llena el hueco con object-cover y no necesita nada. */}
+      <div
+        className={cn(
+          "absolute inset-0 z-10 flex flex-col items-center justify-center gap-[4%] px-[8%] text-center",
+          fade === "left" && "pl-[52%]",
+          fade === "right" && "pr-[52%]",
+        )}
+      >
         <ImageGlyph className="w-[16%] min-w-6 max-w-16 text-white/25" />
         {showLabel ? (
           <span className="text-[clamp(.5rem,1.05cqw,.8rem)] font-medium uppercase leading-tight tracking-[0.22em] text-white/40">

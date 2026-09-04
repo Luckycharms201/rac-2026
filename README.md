@@ -92,7 +92,9 @@ src/
     deck/
       Deck.tsx                navegación, fullscreen, HUD, transiciones
       SlideShell.tsx          envoltura 16:9 + fondo + grano + viñeta
-      motion.tsx              variantes compartidas y cascada de entrada
+      photo-panel.tsx         panel de foto a sangre, desvanecido al centro
+      motion.tsx              cascada de entrada (Reveal / RevealItem)
+      motion-variants.ts      variantes y easing compartidos
       typography.tsx          escala tipográfica del deck
       slides/                 01-cover … 08-cierre
   data/

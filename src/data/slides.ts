@@ -10,9 +10,8 @@ import VeinteMinutos from "@/components/deck/slides/07-veinte-minutos";
 import Cierre from "@/components/deck/slides/08-cierre";
 
 import {
-  CIERRE_PHOTOS,
+  CIERRE_PHOTO,
   COVER_PHOTOS,
-  MOMENTOS_PHOTOS,
   PROPOSITO_PHOTO,
   QUE_ES_PHOTO,
 } from "@/data/photos";
@@ -58,7 +57,7 @@ export const SLIDES: SlideEntry[] = [
   {
     id: "momentos",
     title: "Momentos clave",
-    photoIds: ids(MOMENTOS_PHOTOS),
+    photoIds: [],
     Component: Momentos,
   },
   {
@@ -76,7 +75,7 @@ export const SLIDES: SlideEntry[] = [
   {
     id: "cierre",
     title: "Cierre",
-    photoIds: ids(CIERRE_PHOTOS),
+    photoIds: [CIERRE_PHOTO.id],
     Component: Cierre,
   },
 ];

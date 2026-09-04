@@ -21,7 +21,11 @@ export type PhotoProps = {
   fade?: "left" | "right";
   /** Desactiva el lazy loading: úsalo en el slide visible. */
   priority?: boolean;
-  /** Se muestra el label sobre el placeholder. @default true */
+  /**
+   * Muestra el indicador del placeholder (ícono + label). Apágalo cuando la
+   * foto es un fondo a toda la lámina: cualquier marca cae detrás del texto.
+   * @default true
+   */
   showLabel?: boolean;
   className?: string;
   /** Clases para el <img> / relleno interno. */
@@ -139,11 +143,13 @@ function PhotoPlaceholder({
           fade === "right" && "pr-[52%]",
         )}
       >
-        <ImageGlyph className="w-[16%] min-w-6 max-w-16 text-white/25" />
         {showLabel ? (
-          <span className="text-[clamp(.5rem,1.05cqw,.8rem)] font-medium uppercase leading-tight tracking-[0.22em] text-white/40">
-            {label}
-          </span>
+          <>
+            <ImageGlyph className="w-[16%] min-w-6 max-w-16 text-white/25" />
+            <span className="text-[clamp(.5rem,1.05cqw,.8rem)] font-medium uppercase leading-tight tracking-[0.22em] text-white/40">
+              {label}
+            </span>
+          </>
         ) : null}
       </div>
     </div>

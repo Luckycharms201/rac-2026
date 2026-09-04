@@ -1,15 +1,13 @@
 import { SlideShell } from "@/components/deck/SlideShell";
 import { Reveal, RevealItem } from "@/components/deck/motion";
 import { SlideTitle } from "@/components/deck/typography";
-import { Photo } from "@/components/ui/photo";
 import { cn } from "@/lib/utils";
 
 type Momento = { texto: string; destacado?: boolean };
 
-const DIAS: { titulo: string; foto: string; momentos: Momento[] }[] = [
+const DIAS: { titulo: string; momentos: Momento[] }[] = [
   {
     titulo: "Día 1 – Viernes",
-    foto: "momentos-dia-1",
     momentos: [
       { texto: "Registro" },
       { texto: "Mensaje de Directivos" },
@@ -18,7 +16,6 @@ const DIAS: { titulo: string; foto: string; momentos: Momento[] }[] = [
   },
   {
     titulo: "Día 2 – Sábado",
-    foto: "momentos-dia-2",
     momentos: [
       { texto: "Desayuno" },
       { texto: "Tu Escuela Hoy", destacado: true },
@@ -29,7 +26,12 @@ const DIAS: { titulo: string; foto: string; momentos: Momento[] }[] = [
   },
 ];
 
-/** Slide 5 — Momentos clave. */
+/**
+ * Slide 5 — Momentos clave.
+ * Sin fotos: las dos tarjetas son sólo el programa. Con el hueco que dejó
+ * la foto, la lista crece y se centra en vertical — dejarla arriba con el
+ * tamaño de antes habría hecho ver las tarjetas vacías.
+ */
 export function Momentos() {
   return (
     <SlideShell
@@ -43,39 +45,37 @@ export function Momentos() {
           <SlideTitle className="text-center">Momentos clave</SlideTitle>
         </RevealItem>
 
-        <div className="mt-[4cqh] grid min-h-0 w-full flex-1 grid-cols-2 gap-[3cqw]">
+        <div className="mt-[5cqh] grid min-h-0 w-full flex-1 grid-cols-2 gap-[3cqw]">
           {DIAS.map((dia) => (
             <RevealItem
               key={dia.titulo}
-              className="rac-glass flex min-h-0 flex-col overflow-hidden rounded-[1.6cqw] p-[1.5cqw]"
+              // Contenido alineado arriba, no centrado: los dos días tienen distinto
+              // número de momentos, y centrarlos por separado descuadra los
+              // encabezados entre una tarjeta y otra.
+              className="rac-glass flex min-h-0 flex-col rounded-[1.6cqw] px-[3cqw] pt-[6cqh] pb-[3cqh]"
             >
-              <Photo
-                id={dia.foto}
-                ratio="16/9"
-                priority
-                className="max-h-[22cqh] w-full shrink-0 rounded-[1cqw]"
-              />
-
-              <h3 className="mt-[2cqh] shrink-0 font-semibold tracking-[-0.02em] text-[color:var(--rac-sky)] text-[clamp(.85rem,1.8cqw,1.85rem)]">
+              <h3 className="shrink-0 font-semibold tracking-[-0.02em] text-[color:var(--rac-sky)] text-[clamp(1rem,2.2cqw,2.25rem)]">
                 {dia.titulo}
               </h3>
 
-              <ul className="mt-[1.2cqh] flex min-h-0 flex-col gap-[0.6cqh]">
+              <span className="mt-[2cqh] block h-px w-[7cqw] shrink-0 bg-[linear-gradient(to_right,var(--rac-azure),transparent)]" />
+
+              <ul className="mt-[3cqh] flex min-h-0 flex-col gap-[1.6cqh]">
                 {dia.momentos.map((momento) => (
                   <li
                     key={momento.texto}
                     className={cn(
-                      "flex items-center gap-[1cqw] rounded-[0.6cqw] py-[0.5cqh] text-[clamp(.7rem,1.5cqw,1.55rem)]",
+                      "flex items-center gap-[1.2cqw] rounded-[0.6cqw] text-[clamp(.8rem,1.85cqw,1.9rem)]",
                       momento.destacado
                         ? // El punto central de toda la presentación.
-                          "-ml-[0.6cqw] border-l-[3px] border-[color:var(--rac-azure)] bg-[color:color-mix(in_oklab,var(--rac-azure)_15%,transparent)] px-[1cqw] font-bold uppercase tracking-[0.06em] text-white shadow-[0_0_28px_-6px_color-mix(in_oklab,var(--rac-azure)_60%,transparent)]"
+                          "-ml-[1cqw] border-l-[3px] border-[color:var(--rac-azure)] bg-[color:color-mix(in_oklab,var(--rac-azure)_15%,transparent)] px-[1.2cqw] py-[1cqh] font-bold uppercase tracking-[0.06em] text-white shadow-[0_0_28px_-6px_color-mix(in_oklab,var(--rac-azure)_60%,transparent)]"
                         : "font-light text-[color:color-mix(in_oklab,var(--rac-mist)_82%,transparent)]",
                     )}
                   >
                     {!momento.destacado ? (
                       <span
                         aria-hidden
-                        className="h-[0.35cqw] w-[0.35cqw] min-h-[3px] min-w-[3px] shrink-0 rounded-full bg-[color:var(--rac-azure)]"
+                        className="h-[0.4cqw] w-[0.4cqw] min-h-[3px] min-w-[3px] shrink-0 rounded-full bg-[color:var(--rac-azure)]"
                       />
                     ) : null}
                     {momento.texto}

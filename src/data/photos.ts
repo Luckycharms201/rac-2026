@@ -53,26 +53,22 @@ export const PROPOSITO_PHOTO: Photo = {
   ratio: "4/5",
 };
 
-/* ── Slide 5: Momentos clave ──────────────────────────────────── */
-export const MOMENTOS_PHOTOS: Photo[] = [
-  { id: "momentos-dia-1", label: "Cena de gala, viernes", ratio: "16/9" },
-  { id: "momentos-dia-2", label: "Tour por el campus, sábado", ratio: "16/9" },
-];
-
-/* ── Slide 8: Cierre ──────────────────────────────────────────── */
-export const CIERRE_PHOTOS: Photo[] = [
-  { id: "cierre-01", label: "Grupo con el Cerro de la Silla", ratio: "4/3" },
-  { id: "cierre-02", label: "Generación frente al Mural", ratio: "4/3" },
-  { id: "cierre-03", label: "Egresados en el evento", ratio: "4/3" },
-];
+/* ── Slide 8: Cierre ──────────────────────────────────────────
+ * Una sola foto, de fondo a toda la lámina y bajo el overlay de color.
+ * Elige una toma abierta: el texto va encima y centrado, así que el
+ * centro del encuadre queda tapado. */
+export const CIERRE_PHOTO: Photo = {
+  id: "cierre-fondo",
+  label: "Generación completa en el evento",
+  ratio: "16/9",
+};
 
 /** Registro plano de todas las fotos, indexado por id. */
 export const PHOTOS: readonly Photo[] = [
   ...COVER_PHOTOS,
   QUE_ES_PHOTO,
   PROPOSITO_PHOTO,
-  ...MOMENTOS_PHOTOS,
-  ...CIERRE_PHOTOS,
+  CIERRE_PHOTO,
 ];
 
 const BY_ID = new Map(PHOTOS.map((p) => [p.id, p]));

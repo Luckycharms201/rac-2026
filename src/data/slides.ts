@@ -9,7 +9,13 @@ import Propuesta from "@/components/deck/slides/06-propuesta";
 import VeinteMinutos from "@/components/deck/slides/07-veinte-minutos";
 import Cierre from "@/components/deck/slides/08-cierre";
 
-import { CIERRE_PHOTOS, COVER_PHOTOS, MOMENTOS_PHOTOS } from "@/data/photos";
+import {
+  CIERRE_PHOTOS,
+  COVER_PHOTOS,
+  MOMENTOS_PHOTOS,
+  PROPOSITO_PHOTO,
+  QUE_ES_PHOTO,
+} from "@/data/photos";
 
 export type SlideEntry = {
   /** Identificador estable; también es la key de la transición. */
@@ -34,13 +40,13 @@ export const SLIDES: SlideEntry[] = [
   {
     id: "que-es",
     title: "¿Qué es Regreso a Casa?",
-    photoIds: [],
+    photoIds: [QUE_ES_PHOTO.id],
     Component: QueEs,
   },
   {
     id: "proposito",
     title: "Propósito",
-    photoIds: [],
+    photoIds: [PROPOSITO_PHOTO.id],
     Component: Proposito,
   },
   {

@@ -64,8 +64,19 @@ Grupos de fotos en el manifiesto:
 | Constante | Slide | Qué es |
 | --- | --- | --- |
 | `COVER_PHOTOS` | 1 · Portada | 12 imágenes del corredor 3D |
+| `QUE_ES_PHOTO` | 2 · ¿Qué es…? | 1 foto vertical, panel a altura completa |
+| `PROPOSITO_PHOTO` | 3 · Propósito | 1 foto vertical, panel a altura completa |
 | `MOMENTOS_PHOTOS` | 5 · Momentos clave | 2 fotos 16/9, una por día |
 | `CIERRE_PHOTOS` | 8 · Cierre | 3 fotos 4/3 |
+
+**Total: 18 fotos.** Las 12 de la portada llenan los dos rieles del corredor —
+ambos recorren la misma secuencia, así que no hacen falta 24. El slide 1 deriva
+su número de tarjetas de `COVER_PHOTOS.length`, de modo que si agregas o quitas
+entradas la densidad del corredor se ajusta sola y ninguna foto queda sin usar.
+
+El logo de la portada no pasa por el manifiesto: es
+`public/logo-rac-blanco.webp` (blanco con transparencia), referenciado directo
+en `01-cover.tsx`.
 
 ## Estructura
 

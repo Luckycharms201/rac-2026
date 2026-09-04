@@ -49,7 +49,7 @@ export function Propuesta() {
     >
       <Reveal stagger={0.1} className="flex h-full w-full flex-col">
         <RevealItem>
-          <h2 className="rac-title-gradient font-semibold leading-[1] tracking-[-0.035em] text-[clamp(1.9rem,5.2cqw,5.2rem)]">
+          <h2 className="rac-title font-semibold leading-[1] tracking-[-0.035em] text-[clamp(1.9rem,5.2cqw,5.2rem)]">
             Propuesta: Tu Escuela Hoy
           </h2>
         </RevealItem>

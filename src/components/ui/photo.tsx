@@ -8,6 +8,11 @@ export type PhotoProps = {
   id: string;
   /** Sobreescribe el ratio del manifiesto, p. ej. "16/9". */
   ratio?: string;
+  /**
+   * Ignora el ratio y llena el contenedor padre. Para los paneles de foto a
+   * altura completa, donde manda el hueco y no la proporción del archivo.
+   */
+  fill?: boolean;
   /** Desactiva el lazy loading: úsalo en el slide visible. */
   priority?: boolean;
   /** Se muestra el label sobre el placeholder. @default true */
@@ -25,6 +30,7 @@ export type PhotoProps = {
 export function Photo({
   id,
   ratio,
+  fill = false,
   priority = false,
   showLabel = true,
   className,
@@ -37,9 +43,10 @@ export function Photo({
     <div
       className={cn(
         "relative overflow-hidden rounded-2xl border border-white/10 bg-black/40",
+        fill && "h-full w-full",
         className,
       )}
-      style={{ aspectRatio: aspect }}
+      style={fill ? undefined : { aspectRatio: aspect }}
     >
       {photo.src ? (
         <img

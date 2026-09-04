@@ -18,7 +18,13 @@ export type Photo = {
   src?: string; // undefined = placeholder
 };
 
-/* ── Portada (slide 1): 12 imágenes para el corredor ──────────── */
+/* ── Portada (slide 1): 12 imágenes para el corredor ────────────
+ * Los dos rieles recorren la misma secuencia, así que estas 12 llenan
+ * la izquierda y la derecha: no hacen falta 24. El slide deriva su
+ * número de tarjetas de la longitud de esta lista, de modo que agregar
+ * o quitar entradas aquí cambia la densidad del corredor y todas se
+ * usan siempre — con menos tarjetas que fotos, las últimas nunca
+ * llegarían a aparecer. */
 export const COVER_PHOTOS: Photo[] = [
   { id: "cover-01", label: "Egresados llegando al campus", ratio: "3/4" },
   { id: "cover-02", label: "Abrazo de reencuentro", ratio: "3/4" },
@@ -33,6 +39,19 @@ export const COVER_PHOTOS: Photo[] = [
   { id: "cover-11", label: "Detalle de gafete y bienvenida", ratio: "3/4" },
   { id: "cover-12", label: "Foto de generación al cierre", ratio: "3/4" },
 ];
+
+/* ── Slides 2 y 3: foto protagonista, a altura completa ───────── */
+export const QUE_ES_PHOTO: Photo = {
+  id: "que-es-principal",
+  label: "Egresados reencontrándose en el campus",
+  ratio: "4/5",
+};
+
+export const PROPOSITO_PHOTO: Photo = {
+  id: "proposito-principal",
+  label: "Generación reunida frente a Rectoría",
+  ratio: "4/5",
+};
 
 /* ── Slide 5: Momentos clave ──────────────────────────────────── */
 export const MOMENTOS_PHOTOS: Photo[] = [
@@ -50,6 +69,8 @@ export const CIERRE_PHOTOS: Photo[] = [
 /** Registro plano de todas las fotos, indexado por id. */
 export const PHOTOS: readonly Photo[] = [
   ...COVER_PHOTOS,
+  QUE_ES_PHOTO,
+  PROPOSITO_PHOTO,
   ...MOMENTOS_PHOTOS,
   ...CIERRE_PHOTOS,
 ];

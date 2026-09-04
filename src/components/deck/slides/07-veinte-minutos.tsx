@@ -29,7 +29,7 @@ export function VeinteMinutos() {
     >
       <Reveal stagger={0.09} className="flex h-full w-full flex-col">
         <RevealItem>
-          <SlideTitle className="text-[clamp(1.8rem,5cqw,5rem)]">
+          <SlideTitle className="text-[clamp(1.8rem,5cqw,5rem)] leading-[1]">
             ¿Cómo se verán estos 20 minutos?
           </SlideTitle>
         </RevealItem>

@@ -28,7 +28,7 @@ export function Fechas() {
     >
       <Reveal stagger={0.08} className="flex h-full w-full flex-col">
         <RevealItem>
-          <h2 className="rac-title-gradient-ink font-semibold leading-[1] tracking-[-0.035em] text-[clamp(2rem,5.6cqw,5.6rem)]">
+          <h2 className="rac-title-ink font-semibold leading-[1] tracking-[-0.035em] text-[clamp(2rem,5.6cqw,5.6rem)]">
             Fechas RAC 2026
           </h2>
         </RevealItem>

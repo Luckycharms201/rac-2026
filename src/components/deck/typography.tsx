@@ -4,6 +4,20 @@ import { cn } from "@/lib/utils";
 /* Escala tipográfica del deck. Todo en `cqw` con clamp: el mismo peso
  * óptico en una laptop y en el cañón, sin recalcular nada. */
 
+/**
+ * Título de slide.
+ *
+ * OJO al sobreescribir el tamaño: en Tailwind una utilidad de `font-size`
+ * arrastra su propio `line-height`, así que `tailwind-merge` borra todo
+ * `leading-*` que venga *antes* de un `text-[...]` — incluido el de aquí
+ * abajo. Si cambias el tamaño, vuelve a pasar el leading y ponlo *después*
+ * del tamaño en la misma cadena:
+ *
+ *   ✅ className="text-[clamp(...)] leading-[0.98]"
+ *   ❌ className="leading-[0.98] text-[clamp(...)]"   ← se pierde el leading
+ *
+ * Si no, el título cae al 1.5 por defecto y los de dos líneas se abren.
+ */
 export function SlideTitle({
   className,
   children,
@@ -12,7 +26,7 @@ export function SlideTitle({
   return (
     <h2
       className={cn(
-        "rac-title-gradient text-balance font-semibold leading-[0.98] tracking-[-0.03em]",
+        "rac-title text-balance font-semibold leading-[0.98] tracking-[-0.03em]",
         "text-[clamp(2.25rem,6.4cqw,6.5rem)]",
         className,
       )}

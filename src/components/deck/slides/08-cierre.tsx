@@ -21,7 +21,7 @@ export function Cierre() {
         className="flex h-full w-full flex-col items-center justify-center"
       >
         <RevealItem>
-          <h2 className="rac-title-gradient text-center font-semibold leading-[1.05] tracking-[-0.035em] text-[clamp(1.6rem,4.4cqw,4.4rem)]">
+          <h2 className="rac-title text-center font-semibold leading-[1.05] tracking-[-0.035em] text-[clamp(1.6rem,4.4cqw,4.4rem)]">
             Construyamos juntos una experiencia
             <br />
             que haga de Regreso a Casa el inicio

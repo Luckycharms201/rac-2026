@@ -119,29 +119,16 @@
 }
 
 @layer utilities {
-  /* Título con degradado azure → blanco, de izquierda a derecha. */
-  .rac-title-gradient {
-    background-image: linear-gradient(
-      to right,
-      var(--rac-azure) 0%,
-      #7fb0ff 38%,
-      #ffffff 82%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  /* Títulos a un solo color. El azul se queda como acento —haces de luz,
+   * líneas, chips—, no como color de texto: sobre foto un título azul
+   * pierde contraste justo donde más falta hace. */
+  .rac-title {
+    color: #ffffff;
   }
 
   /* Variante para el slide claro. */
-  .rac-title-gradient-ink {
-    background-image: linear-gradient(
-      to right,
-      var(--rac-blue) 0%,
-      var(--rac-navy) 70%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .rac-title-ink {
+    color: var(--rac-blue);
   }
 
   /* Tarjeta de vidrio: el material base de todo el deck. */

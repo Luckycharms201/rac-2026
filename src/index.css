@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────
+ * Regreso a Casa 2026 — sistema visual
+ * Azul profundo institucional del Tec sobre negro azulado.
+ * Todos los tokens viven aquí; los slides sólo los consumen.
+ * ────────────────────────────────────────────────────────────── */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: dark;
+
+  /* Paleta Regreso a Casa */
+  --rac-ink: #04070f; /* negro azulado, fondo base */
+  --rac-navy-deep: #001233;
+  --rac-navy: #002a6e; /* azul institucional Tec */
+  --rac-blue: #0b5cd5;
+  --rac-azure: #2e7df6; /* acentos y títulos */
+  --rac-sky: #9cc4ff;
+  --rac-mist: #dde7f5; /* texto secundario */
+  --rac-paper: #e8e8e8; /* fondo del slide claro de fechas */
+
+  /* Tokens de tema (modo oscuro por default) */
+  --background: var(--rac-ink);
+  --foreground: #f3f7ff;
+  --card: rgba(255, 255, 255, 0.06);
+  --card-foreground: #f3f7ff;
+  --popover: var(--rac-navy-deep);
+  --popover-foreground: #f3f7ff;
+  --primary: var(--rac-azure);
+  --primary-foreground: #04070f;
+  --secondary: var(--rac-navy);
+  --secondary-foreground: var(--rac-mist);
+  --muted: rgba(255, 255, 255, 0.08);
+  --muted-foreground: rgba(221, 231, 245, 0.62);
+  --accent: var(--rac-blue);
+  --accent-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: var(--rac-azure);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-rac-ink: var(--rac-ink);
+  --color-rac-navy-deep: var(--rac-navy-deep);
+  --color-rac-navy: var(--rac-navy);
+  --color-rac-blue: var(--rac-blue);
+  --color-rac-azure: var(--rac-azure);
+  --color-rac-sky: var(--rac-sky);
+  --color-rac-mist: var(--rac-mist);
+  --color-rac-paper: var(--rac-paper);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans:
+    "Inter Tight", "Manrope", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-display:
+    "Inter Tight", "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  html {
+    /* La presentación nunca hace scroll: cabe exacta en el viewport. */
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--rac-ink);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow: hidden;
+  }
+
+  /* Números alineados en tablas y contadores. */
+  .tnum {
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+}
+
+@layer utilities {
+  /* Título con degradado azure → blanco, de izquierda a derecha. */
+  .rac-title-gradient {
+    background-image: linear-gradient(
+      to right,
+      var(--rac-azure) 0%,
+      #7fb0ff 38%,
+      #ffffff 82%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Variante para el slide claro. */
+  .rac-title-gradient-ink {
+    background-image: linear-gradient(
+      to right,
+      var(--rac-blue) 0%,
+      var(--rac-navy) 70%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Tarjeta de vidrio: el material base de todo el deck. */
+  .rac-glass {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 24px 60px -30px rgba(0, 0, 0, 0.9);
+  }
+
+  .rac-cursor-hidden,
+  .rac-cursor-hidden * {
+    cursor: none !important;
+  }
+}
+
+/* prefers-reduced-motion se respeta por componente, no con un reset global:
+ * el corredor de la portada necesita *pausarse* a media animación (no
+ * colapsar a duración cero), y las transiciones del deck se apagan desde
+ * framer-motion con useReducedMotion(). */

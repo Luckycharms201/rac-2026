@@ -1,0 +1,89 @@
+import * as React from "react";
+import { cn } from "@/lib/utils";
+
+/* Escala tipográfica del deck. Todo en `cqw` con clamp: el mismo peso
+ * óptico en una laptop y en el cañón, sin recalcular nada. */
+
+export function SlideTitle({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"h2">) {
+  return (
+    <h2
+      className={cn(
+        "rac-title-gradient text-balance font-semibold leading-[0.98] tracking-[-0.03em]",
+        "text-[clamp(2.25rem,6.4cqw,6.5rem)]",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </h2>
+  );
+}
+
+export function Lead({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"p">) {
+  return (
+    <p
+      className={cn(
+        "text-pretty font-light leading-[1.5] tracking-[-0.005em] text-[color:color-mix(in_oklab,var(--rac-mist)_88%,transparent)]",
+        "text-[clamp(.9rem,1.85cqw,1.9rem)]",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </p>
+  );
+}
+
+export function Eyebrow({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"span">) {
+  return (
+    <span
+      className={cn(
+        "font-medium uppercase tracking-[0.3em] text-[color:var(--rac-sky)]",
+        "text-[clamp(.55rem,.95cqw,.95rem)]",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </span>
+  );
+}
+
+/** Estrella de cuatro puntas del arte original, con degradado azul. */
+export function FourPointStar({
+  className,
+  gradientId = "rac-star",
+}: {
+  className?: string;
+  gradientId?: string;
+}) {
+  return (
+    <svg viewBox="0 0 100 100" aria-hidden className={className}>
+      <defs>
+        <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="var(--rac-sky)" />
+          <stop offset="55%" stopColor="var(--rac-azure)" />
+          <stop offset="100%" stopColor="var(--rac-blue)" />
+        </linearGradient>
+      </defs>
+      {/* Cuatro puntas cóncavas: los controles se van al centro, que es
+       * lo que le da el talle delgado del asterisco original. */}
+      <path
+        fill={`url(#${gradientId})`}
+        d="M50 0C52 27 73 48 100 50 73 52 52 73 50 100 48 73 27 52 0 50 27 48 48 27 50 0Z"
+      />
+    </svg>
+  );
+}

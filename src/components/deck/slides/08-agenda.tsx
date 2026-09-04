@@ -16,11 +16,11 @@ const FILAS = [
 const MAX_MINUTOS = Math.max(...FILAS.map((f) => f.minutos));
 
 /**
- * Slide 7 — ¿Cómo se verán estos 20 minutos?
+ * Slide 8 — Propuesta de Agenda y Contenido.
  * La barra proporcional al tiempo hace legible el ritmo del bloque de
  * un vistazo: dos extremos cortos y dos bloques largos en medio.
  */
-export function VeinteMinutos() {
+export function Agenda() {
   return (
     <SlideShell
       tone="ink"
@@ -30,7 +30,7 @@ export function VeinteMinutos() {
       <Reveal stagger={0.09} className="flex h-full w-full flex-col">
         <RevealItem>
           <SlideTitle className="text-[clamp(1.8rem,5cqw,5rem)] leading-[1]">
-            ¿Cómo se verán estos 20 minutos?
+            Propuesta de Agenda y Contenido
           </SlideTitle>
         </RevealItem>
 
@@ -82,4 +82,4 @@ export function VeinteMinutos() {
   );
 }
 
-export default VeinteMinutos;
+export default Agenda;

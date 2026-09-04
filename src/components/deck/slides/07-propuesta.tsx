@@ -39,7 +39,7 @@ const BLOQUES: { titulo: string; cuerpo: ReactNode }[] = [
   },
 ];
 
-/** Slide 6 — Propuesta: Tu Escuela Hoy. */
+/** Slide 7 — Propuesta: Tu Escuela Hoy. */
 export function Propuesta() {
   return (
     <SlideShell

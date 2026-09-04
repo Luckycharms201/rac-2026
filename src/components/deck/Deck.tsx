@@ -282,7 +282,9 @@ function Hud({ index, total, showHint, title }: HudProps) {
         </div>
       </div>
 
-      {/* El hint vive arriba: abajo chocaría con el pie de la portada. */}
+      {/* El hint vive en el margen de arriba: abajo chocaría con el pie de la
+       * portada, y a media altura se monta sobre el título del slide en el
+       * que arranques (con deep link al hash puede ser cualquiera). */}
       <AnimatePresence>
         {showHint ? (
           <motion.div
@@ -290,7 +292,7 @@ function Hud({ index, total, showHint, title }: HudProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.5 }}
-            className="pointer-events-none absolute inset-x-0 top-[5cqh] z-40 flex justify-center"
+            className="pointer-events-none absolute inset-x-0 top-[1.4cqh] z-40 flex justify-center"
           >
             <span className="rounded-full border border-white/15 bg-black/45 px-[1.6cqw] py-[0.9cqh] text-[clamp(.55rem,.9cqw,.85rem)] font-light tracking-[0.16em] text-white/70 backdrop-blur-md">
               ← → para navegar · F para pantalla completa

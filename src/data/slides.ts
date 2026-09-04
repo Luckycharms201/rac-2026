@@ -5,9 +5,10 @@ import QueEs from "@/components/deck/slides/02-que-es";
 import Proposito from "@/components/deck/slides/03-proposito";
 import Fechas from "@/components/deck/slides/04-fechas";
 import Momentos from "@/components/deck/slides/05-momentos";
-import Propuesta from "@/components/deck/slides/06-propuesta";
-import VeinteMinutos from "@/components/deck/slides/07-veinte-minutos";
-import Cierre from "@/components/deck/slides/08-cierre";
+import Retroalimentacion from "@/components/deck/slides/06-retroalimentacion";
+import Propuesta from "@/components/deck/slides/07-propuesta";
+import Agenda from "@/components/deck/slides/08-agenda";
+import Cierre from "@/components/deck/slides/09-cierre";
 
 import {
   CIERRE_PHOTO,
@@ -61,16 +62,22 @@ export const SLIDES: SlideEntry[] = [
     Component: Momentos,
   },
   {
+    id: "retroalimentacion",
+    title: "Retroalimentación RAC 2025",
+    photoIds: [],
+    Component: Retroalimentacion,
+  },
+  {
     id: "propuesta",
     title: "Propuesta: Tu Escuela Hoy",
     photoIds: [],
     Component: Propuesta,
   },
   {
-    id: "veinte-minutos",
-    title: "¿Cómo se verán estos 20 minutos?",
+    id: "agenda",
+    title: "Propuesta de Agenda y Contenido",
     photoIds: [],
-    Component: VeinteMinutos,
+    Component: Agenda,
   },
   {
     id: "cierre",

@@ -119,6 +119,24 @@ Todo el layout se expresa en `cqw`/`cqh` sobre un escenario 16:9 con
 `container-type: size`, así que la lámina se ve idéntica en una laptop y en el
 cañón, y nunca aparece scroll.
 
+## Deploy en Cloudflare Pages
+
+| Ajuste | Valor |
+| --- | --- |
+| Framework preset | None (o Vite) |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Root directory | *(vacío)* |
+
+`.nvmrc` fija Node 22.12.0 en el repo: Vite 8 exige `^20.19 || >=22.12` y Pages
+puede caer a Node 18 por default, que falla el build. Si prefieres el dashboard,
+la variable equivalente es `NODE_VERSION`.
+
+No hace falta `_redirects`: el deck es una sola página y el índice del slide vive
+en el hash (`#4`), no en la ruta, así que no hay rutas profundas que reescribir.
+
+Cada push a `main` dispara un deploy nuevo.
+
 ## Agregar componentes de shadcn/ui
 
 El proyecto está configurado con `components.json` y el alias `@/`, así que

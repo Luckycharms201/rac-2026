@@ -18,26 +18,22 @@ export type Photo = {
   src?: string; // undefined = placeholder
 };
 
-/* ── Portada (slide 1): 12 imágenes para el corredor ────────────
- * Los dos rieles recorren la misma secuencia, así que estas 12 llenan
- * la izquierda y la derecha: no hacen falta 24. El slide deriva su
+/* ── Portada (slide 1): 6 imágenes para el corredor ─────────────
+ * Los dos rieles recorren la misma secuencia, así que estas 6 llenan
+ * la izquierda y la derecha: no hacen falta 12. El slide deriva su
  * número de tarjetas de la longitud de esta lista, de modo que agregar
  * o quitar entradas aquí cambia la densidad del corredor y todas se
  * usan siempre — con menos tarjetas que fotos, las últimas nunca
- * llegarían a aparecer. */
+ * llegarían a aparecer. Seis es deliberado: menos tarjetas en vuelo
+ * significa cada una más grande y más tiempo en pantalla, que es lo
+ * que hace que la foto se vea en lugar de solo pasar. */
 export const COVER_PHOTOS: Photo[] = [
   { id: "cover-01", label: "Egresados llegando al campus", ratio: "3/4" },
   { id: "cover-02", label: "Abrazo de reencuentro", ratio: "3/4" },
   { id: "cover-03", label: "Rectoría al atardecer", ratio: "3/4" },
   { id: "cover-04", label: "Cena de gala, brindis", ratio: "3/4" },
   { id: "cover-05", label: "Generación posando en el Mural", ratio: "3/4" },
-  { id: "cover-06", label: "Tour por el campus", ratio: "3/4" },
-  { id: "cover-07", label: "Aula llena en Clase de Recuerdo", ratio: "3/4" },
-  { id: "cover-08", label: "Cerro de la Silla desde el campus", ratio: "3/4" },
-  { id: "cover-09", label: "Familias en el registro", ratio: "3/4" },
-  { id: "cover-10", label: "Borregos en la explanada", ratio: "3/4" },
-  { id: "cover-11", label: "Detalle de gafete y bienvenida", ratio: "3/4" },
-  { id: "cover-12", label: "Foto de generación al cierre", ratio: "3/4" },
+  { id: "cover-06", label: "Foto de generación al cierre", ratio: "3/4" },
 ];
 
 /* ── Slides 2 y 3: foto protagonista, a altura completa ───────── */

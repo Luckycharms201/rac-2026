@@ -14,7 +14,17 @@ const IMAGES = streamImages();
  */
 export function Cover() {
   return (
-    <SlideShell tone="none" beam={false} bleed vignette={0.5} grain={0.05}>
+    <SlideShell
+      // Mismo fondo que el resto del deck: el azul `ink` y el haz. El
+      // corredor no tapa la lámina — es transparente entre tarjeta y
+      // tarjeta — así que el degradado y la luz se ven por los huecos y
+      // la portada deja de flotar sobre negro plano.
+      tone="ink"
+      beam={{ from: "bottom-right", intensity: 0.5, spread: 62, length: 155 }}
+      bleed
+      vignette={0.55}
+      grain={0.05}
+    >
       <ImageStreamHero
         images={IMAGES}
         // Una tarjeta por foto del manifiesto: así todas se ven y no hay
@@ -24,8 +34,11 @@ export function Cover() {
         axis={50}
         className="absolute inset-0 h-full w-full rounded-none border-0"
       >
-        {/* Oscurecimiento base para que el texto lea sobre cualquier foto. */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40" />
+        {/* Oscurecimiento base para que el texto lea sobre cualquier foto.
+         * Teñido con el azul de la lámina, no negro puro: el negro tapaba
+         * justo la parte baja, que es donde el `ink` y el haz son más
+         * brillantes, y el fondo del deck no llegaba a verse. */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(2,6,20,.6)_0%,rgba(2,6,20,.42)_42%,rgba(2,6,20,.24)_100%)]" />
         {/* Cortinas arriba y abajo: el logo y el año viven en los bordes,
          * que es donde el degradado base era más claro. Deliberadamente
          * suaves y con el centro limpio — las tarjetas más grandes del

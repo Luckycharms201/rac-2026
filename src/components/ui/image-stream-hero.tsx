@@ -21,14 +21,18 @@ import { cn } from "@/lib/utils";
  *    there, so the ribbon leaves the centre as a flat band, bends
  *    once, and only then runs out on the diagonal. Parallel rails
  *    project to a straight cone with no bend at all.
- * 3. Neither end of the loop is ever on screen. A card dies with its
- *    inner edge past 50cqw, clear of the container's edge. And it is
- *    born *across* the axis — `railBirth` is negative, so the newest
- *    card starts on the far side and sweeps back through the centre.
- *    That plugs the throat: the axis stays covered at every instant,
- *    and a newborn lands behind cards that already cover it, so it
- *    needs no fade in. Birthing on its own side instead leaves a hole
- *    at dead centre that blinks open once every cycle.
+ * 3. Neither end of the loop is ever on screen, and no two cards ever
+ *    touch. A card dies with its inner edge past 50cqw, clear of the
+ *    container's edge. And it is born on *its own* side: `railBirth`
+ *    is positive and larger than half a card's width, so the newest
+ *    card of each rail clears the axis instead of straddling it.
+ *    Birthing across the axis (a negative `railBirth`) plugs the
+ *    throat completely, but the two rails then swap sides at the
+ *    vanishing point and visibly cut through each other on the way
+ *    back — invisible with flat placeholders, glaring with photos.
+ *    What replaces the plug is `fadeIn`: the newborn ramps up from
+ *    transparent over the first stretch, so the throat reads as depth
+ *    going dark rather than as a card popping into being.
  *
  * Every length is in `cqw` — a percentage of the container's width —
  * so the whole corridor keeps its proportions at any size. The
@@ -59,8 +63,8 @@ export type CorridorPath = {
   /** On-screen card height as a card leaves the frame. @default 46 */
   exitHeight?: number;
   /**
-   * Lateral offset at birth. Negative starts the card across the axis so the
-   * centre never opens up — see note 3 above. @default -11
+   * Lateral offset at birth. Must exceed `cardWidth / 2` or the two rails'
+   * newborns overlap on the axis — see note 3 above. @default 12
    */
   railBirth?: number;
   /** Lateral offset once the rails have finished opening. @default 44 */
@@ -71,6 +75,11 @@ export type CorridorPath = {
   turnBirth?: number;
   /** Y-rotation at exit, degrees. @default 28 */
   turnExit?: number;
+  /**
+   * Fraction of the path over which a newborn fades up from transparent.
+   * @default 0.12
+   */
+  fadeIn?: number;
   /** Keyframe stops used to trace the curve. Raise only if motion looks faceted. @default 24 */
   stops?: number;
 };
@@ -82,11 +91,12 @@ const PATH: Required<CorridorPath> = {
   cardRadius: 0.4,
   birthHeight: 2.6,
   exitHeight: 46,
-  railBirth: -11,
+  railBirth: 12,
   railExit: 44,
   fan: 3.3,
   turnBirth: 6,
   turnExit: 28,
+  fadeIn: 0.12,
   stops: 24,
 };
 
@@ -104,10 +114,17 @@ function keyframes(dir: 1 | -1, name: string, p: Required<CorridorPath>) {
     const rail =
       p.railExit - (p.railExit - p.railBirth) * Math.pow(1 - u, p.fan);
     const turn = p.turnBirth + (p.turnExit - p.turnBirth) * u;
+    // Smoothstep, no rampa lineal: una rampa recta deja un codo visible
+    // justo donde la tarjeta termina de aparecer, y el codo se lee como
+    // un parpadeo porque ahí el tamaño todavía crece rápido.
+    const t = p.fadeIn > 0 ? Math.min(1, u / p.fadeIn) : 1;
+    const fade = t * t * (3 - 2 * t);
     steps.push(
-      `${(u * 100).toFixed(2)}%{transform:translate3d(${(dir * rail).toFixed(
+      `${(u * 100).toFixed(2)}%{opacity:${fade.toFixed(
+        3,
+      )};transform:translate3d(${(dir * rail).toFixed(2)}cqw,0,${z.toFixed(
         2,
-      )}cqw,0,${z.toFixed(2)}cqw) rotateY(${(-dir * turn).toFixed(2)}deg)}`,
+      )}cqw) rotateY(${(-dir * turn).toFixed(2)}deg)}`,
     );
   }
   return `@keyframes ${name}{${steps.join("")}}`;

@@ -28,31 +28,40 @@ export type Photo = {
  * significa cada una más grande y más tiempo en pantalla, que es lo
  * que hace que la foto se vea en lugar de solo pasar. */
 export const COVER_PHOTOS: Photo[] = [
-  { id: "cover-01", label: "Egresados llegando al campus", ratio: "3/4" },
-  { id: "cover-02", label: "Abrazo de reencuentro", ratio: "3/4" },
-  { id: "cover-03", label: "Rectoría al atardecer", ratio: "3/4" },
-  { id: "cover-04", label: "Cena de gala, brindis", ratio: "3/4" },
-  { id: "cover-05", label: "Generación posando en el Mural", ratio: "3/4" },
-  { id: "cover-06", label: "Foto de generación al cierre", ratio: "3/4" },
+  { id: "cover-01", label: "Egresados saludando en el campus", ratio: "3/4",
+    src: "/photos/cover-01.webp" },
+  { id: "cover-02", label: "Tres egresadas en la cena de gala", ratio: "3/4",
+    src: "/photos/cover-02.webp" },
+  { id: "cover-03", label: "Egresadas en la foto de generación", ratio: "3/4",
+    src: "/photos/cover-03.webp" },
+  { id: "cover-04", label: "Egresados en su mesa durante la cena", ratio: "3/4",
+    src: "/photos/cover-04.webp" },
+  { id: "cover-05", label: "Egresados celebrando en las letras del campus",
+    ratio: "3/4", src: "/photos/cover-05.webp" },
+  { id: "cover-06", label: "Reconocimiento a un egresado en la ceremonia",
+    ratio: "3/4", src: "/photos/cover-06.webp" },
 ];
 
 /* ── Slides 2 y 3: foto protagonista, a altura completa ───────── */
 export const QUE_ES_PHOTO: Photo = {
   id: "que-es-principal",
-  label: "Egresados reencontrándose en el campus",
+  label: "Egresadas posando frente a las letras iluminadas",
   ratio: "4/5",
+  src: "/photos/que-es-principal.webp",
 };
 
 export const PROPOSITO_PHOTO: Photo = {
   id: "proposito-principal",
-  label: "Generación reunida frente a Rectoría",
+  label: "Egresados escuchando una charla en el auditorio",
   ratio: "4/5",
+  src: "/photos/proposito-principal.webp",
 };
 
 export const RETRO_PHOTO: Photo = {
   id: "retro-principal",
-  label: "Egresados conviviendo en RAC 2025",
+  label: "Mesa de egresados brindando en la cena de gala",
   ratio: "4/5",
+  src: "/photos/retro-principal.webp",
 };
 
 /* ── Slide 8: Cierre ──────────────────────────────────────────
@@ -61,8 +70,9 @@ export const RETRO_PHOTO: Photo = {
  * centro del encuadre queda tapado. */
 export const CIERRE_PHOTO: Photo = {
   id: "cierre-fondo",
-  label: "Generación completa en el evento",
+  label: "Egresado con chaleco «El Tec siempre será tu casa»",
   ratio: "16/9",
+  src: "/photos/cierre-fondo.webp",
 };
 
 /** Registro plano de todas las fotos, indexado por id. */

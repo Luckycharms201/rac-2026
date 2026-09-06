@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Originales de foto: pesan ~180 MB y no se publican; al deck sólo van
+# los .webp ya optimizados de public/photos.
+/FOTOS RAC/

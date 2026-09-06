@@ -45,7 +45,7 @@ export function Cierre() {
           {/* Scrim local detrás del texto. Sostiene el titular sobre una foto
            * clara sin tener que subir el tinte general — subirlo apagaría la
            * foto entera, que es justo lo que no queremos. */}
-          <div className="absolute inset-0 bg-[radial-gradient(64%_38%_at_50%_78%,rgba(2,4,10,.66)_0%,rgba(2,4,10,.32)_55%,transparent_78%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(80%_34%_at_50%_78%,rgba(2,4,10,.66)_0%,rgba(2,4,10,.32)_55%,transparent_78%)]" />
         </>
       }
     >
@@ -54,12 +54,13 @@ export function Cierre() {
         className="flex h-full w-full flex-col items-center justify-end"
       >
         <RevealItem>
-          <h2 className="rac-title max-w-[58cqw] text-center font-semibold text-[clamp(.8rem,2.3cqw,2.3rem)] leading-[1.3] tracking-[-0.02em]">
-            Construyamos juntos una experiencia
+          <h2 className="rac-title max-w-[80cqw] text-center font-semibold text-[clamp(.8rem,2.3cqw,2.3rem)] leading-[1.3] tracking-[-0.02em]">
+            {/* El corte va después de "Regreso a Casa": es el único punto
+             * donde la frase se parte por una junta real y sin separar el
+             * nombre del programa. */}
+            Construyamos juntos una experiencia que haga de Regreso a Casa
             <br />
-            que haga de Regreso a Casa el inicio
-            <br />
-            de una nueva conexión con su Escuela
+            el inicio de una nueva conexión con su Escuela
           </h2>
         </RevealItem>
 

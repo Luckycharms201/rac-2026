@@ -55,12 +55,11 @@ export function Cierre() {
       >
         <RevealItem>
           <h2 className="rac-title max-w-[80cqw] text-center font-semibold text-[clamp(.8rem,2.3cqw,2.3rem)] leading-[1.3] tracking-[-0.02em]">
-            {/* El corte va después de "Regreso a Casa": es el único punto
-             * donde la frase se parte por una junta real y sin separar el
-             * nombre del programa. */}
-            Construyamos juntos una experiencia que haga de Regreso a Casa
+            {/* El corte deja "Regreso a Casa" al frente del segundo
+             * renglón, para que el nombre del programa abra línea. */}
+            Construyamos juntos una experiencia que haga de
             <br />
-            el inicio de una nueva conexión con su Escuela
+            Regreso a Casa el inicio de una nueva conexión con su Escuela
           </h2>
         </RevealItem>
 

@@ -6,9 +6,15 @@ import { CIERRE_PHOTO } from "@/data/photos";
 /**
  * Slide 9 — Cierre.
  * Una sola foto a toda la lámina, con el degradado del deck encima como
- * overlay de color. El overlay es opaco a propósito: la foto la va a
- * poner el usuario después, y el texto tiene que leerse encima de
- * cualquier toma, clara u oscura.
+ * overlay de color. El overlay es opaco a propósito: el texto tiene que
+ * leerse encima de la foto sea clara u oscura.
+ *
+ * El bloque de texto va anclado abajo y no centrado, y por eso es más
+ * chico de lo que pediría un cierre. La foto tiene el mensaje escrito en
+ * el chaleco —"El Tec siempre será tu casa"— justo a media altura, que
+ * es donde caía el titular: centrado, el slide tapaba precisamente la
+ * frase que lo justifica. Bajar el texto deja libre esa franja, y el
+ * scrim local baja con él para no apagarla.
  */
 export function Cierre() {
   return (
@@ -39,16 +45,16 @@ export function Cierre() {
           {/* Scrim local detrás del texto. Sostiene el titular sobre una foto
            * clara sin tener que subir el tinte general — subirlo apagaría la
            * foto entera, que es justo lo que no queremos. */}
-          <div className="absolute inset-0 bg-[radial-gradient(58%_42%_at_50%_48%,rgba(2,4,10,.62)_0%,rgba(2,4,10,.3)_55%,transparent_78%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(64%_38%_at_50%_78%,rgba(2,4,10,.66)_0%,rgba(2,4,10,.32)_55%,transparent_78%)]" />
         </>
       }
     >
       <Reveal
         stagger={0.1}
-        className="flex h-full w-full flex-col items-center justify-center"
+        className="flex h-full w-full flex-col items-center justify-end"
       >
         <RevealItem>
-          <h2 className="rac-title max-w-[62cqw] text-center font-semibold text-[clamp(1.1rem,3.1cqw,3.1rem)] leading-[1.25] tracking-[-0.025em]">
+          <h2 className="rac-title max-w-[58cqw] text-center font-semibold text-[clamp(.8rem,2.3cqw,2.3rem)] leading-[1.3] tracking-[-0.02em]">
             Construyamos juntos una experiencia
             <br />
             que haga de Regreso a Casa el inicio
@@ -57,7 +63,7 @@ export function Cierre() {
           </h2>
         </RevealItem>
 
-        <RevealItem className="mt-[5cqh]">
+        <RevealItem className="mt-[3.5cqh]">
           <span className="block h-px w-[14cqw] bg-[linear-gradient(to_right,transparent,color-mix(in_oklab,var(--rac-azure)_85%,transparent),transparent)]" />
         </RevealItem>
       </Reveal>

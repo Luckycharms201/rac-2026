@@ -8,7 +8,8 @@ import Retroalimentacion from "@/components/deck/slides/05-retroalimentacion";
 import Momentos from "@/components/deck/slides/06-momentos";
 import Propuesta from "@/components/deck/slides/07-propuesta";
 import Agenda from "@/components/deck/slides/08-agenda";
-import Cierre from "@/components/deck/slides/09-cierre";
+import Necesitamos from "@/components/deck/slides/09-necesitamos";
+import Cierre from "@/components/deck/slides/10-cierre";
 
 import {
   CIERRE_PHOTO,
@@ -81,6 +82,12 @@ export const SLIDES: SlideEntry[] = [
     title: "Propuesta de Agenda y Contenido",
     photoIds: [],
     Component: Agenda,
+  },
+  {
+    id: "necesitamos",
+    title: "¿Qué necesitamos?",
+    photoIds: [],
+    Component: Necesitamos,
   },
   {
     id: "cierre",

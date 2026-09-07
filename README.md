@@ -1,7 +1,7 @@
 # Regreso a Casa 2026
 
 Presentación web tipo keynote para el programa **Regreso a Casa 2026** del
-Tecnológico de Monterrey, Campus Monterrey. Nueve slides, diseñados para 16:9 y
+Tecnológico de Monterrey, Campus Monterrey. Diez slides, diseñados para 16:9 y
 proyección en sala.
 
 Vite + React + TypeScript + Tailwind CSS v4, con la estructura de proyecto de
@@ -66,7 +66,7 @@ Grupos de fotos en el manifiesto:
 | `COVER_PHOTOS` | 1 · Portada | 6 imágenes del corredor 3D |
 | `QUE_ES_PHOTO` | 3 · Regreso a Casa | 1 foto vertical, panel a altura completa |
 | `RETRO_PHOTO` | 5 · Retroalimentación | 1 foto vertical, panel a altura completa |
-| `CIERRE_PHOTO` | 9 · Cierre | 1 foto de fondo a toda la lámina |
+| `CIERRE_PHOTO` | 10 · Cierre | 1 foto de fondo a toda la lámina |
 
 **Total: 9 fotos.** Las 6 de la portada llenan los dos rieles del corredor —
 ambos recorren la misma secuencia, así que no hacen falta 12. El slide 1 deriva
@@ -150,7 +150,7 @@ src/
       motion.tsx              cascada de entrada (Reveal / RevealItem)
       motion-variants.ts      variantes y easing compartidos
       typography.tsx          escala tipográfica del deck
-      slides/                 01-cover … 09-cierre
+      slides/                 01-cover … 10-cierre
   data/
     photos.ts                 manifiesto de fotos
     slides.ts                 registro ordenado de los slides

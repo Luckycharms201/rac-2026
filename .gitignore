@@ -26,3 +26,7 @@ dist-ssr
 # Originales de foto: pesan ~180 MB y no se publican; al deck sólo van
 # los .webp ya optimizados de public/photos.
 /FOTOS RAC/
+
+# Master del video: 96 MB. Al deck sólo va la copia comprimida de
+# public/video/ (Cloudflare Pages no publica archivos de más de 25 MiB).
+/*.mp4

@@ -38,6 +38,22 @@ function isEditableTarget(target: EventTarget | null): boolean {
   return /^(input|textarea|select|button)$/i.test(target.tagName);
 }
 
+/* El elemento vive en este mapa —fuera del componente— a propósito: si sólo
+ * lo tuviera una variable local, el recolector puede llevárselo a media
+ * descarga y la precarga se pierde. Los bytes acaban en la caché del
+ * navegador, que es de donde los toma el `<video>` real del slide. */
+const prefetchedVideos = new Map<string, HTMLVideoElement>();
+
+function prefetchVideo(src: string): void {
+  if (prefetchedVideos.has(src)) return;
+  const video = document.createElement("video");
+  video.preload = "auto";
+  video.muted = true;
+  video.src = src;
+  prefetchedVideos.set(src, video);
+  video.load();
+}
+
 function slideFromHash(total: number): number {
   const raw = Number.parseInt(window.location.hash.replace("#", ""), 10);
   if (!Number.isFinite(raw)) return 0;
@@ -157,7 +173,10 @@ export function Deck({ slides }: DeckProps) {
 
   /* ── precarga del siguiente slide ──
    * Sólo las fotos que ya tienen archivo: los placeholders son data URIs
-   * y no cruzan la red. */
+   * y no cruzan la red. El video pesa lo que pesan todas las fotos juntas
+   * varias veces, así que empezar a bajarlo un slide antes es la
+   * diferencia entre que arranque solo y que se quede pensando en la
+   * sala. */
   React.useEffect(() => {
     const upcoming = slides[index + 1];
     if (!upcoming) return;
@@ -166,6 +185,7 @@ export function Deck({ slides }: DeckProps) {
       img.decoding = "async";
       img.src = src;
     }
+    if (upcoming.videoSrc) prefetchVideo(upcoming.videoSrc);
   }, [index, slides]);
 
   /* ── cursor: se esconde tras 3 s sin mover el mouse ── */

@@ -42,7 +42,7 @@ export const COVER_PHOTOS: Photo[] = [
     ratio: "3/4", src: "/photos/cover-06.webp" },
 ];
 
-/* ── Slides 2 y 4: foto protagonista, a altura completa ───────── */
+/* ── Slides 3 y 5: foto protagonista, a altura completa ───────── */
 export const QUE_ES_PHOTO: Photo = {
   id: "que-es-principal",
   label: "Egresados posando con el letrero EXATEC en el campus",
@@ -57,7 +57,7 @@ export const RETRO_PHOTO: Photo = {
   src: "/photos/retro-principal.webp",
 };
 
-/* ── Slide 8: Cierre ──────────────────────────────────────────
+/* ── Slide 9: Cierre ──────────────────────────────────────────
  * Una sola foto, de fondo a toda la lámina y bajo el overlay de color.
  * Elige una toma abierta: el texto va encima y centrado, así que el
  * centro del encuadre queda tapado. */

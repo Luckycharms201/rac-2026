@@ -63,14 +63,13 @@ Grupos de fotos en el manifiesto:
 
 | Constante | Slide | Qué es |
 | --- | --- | --- |
-| `COVER_PHOTOS` | 1 · Portada | 12 imágenes del corredor 3D |
-| `QUE_ES_PHOTO` | 2 · Regreso a Casa | 1 foto vertical, panel a altura completa |
-| `PROPOSITO_PHOTO` | 3 · Propósito | 1 foto vertical, panel a altura completa |
+| `COVER_PHOTOS` | 1 · Portada | 6 imágenes del corredor 3D |
+| `QUE_ES_PHOTO` | 3 · Regreso a Casa | 1 foto vertical, panel a altura completa |
 | `RETRO_PHOTO` | 5 · Retroalimentación | 1 foto vertical, panel a altura completa |
 | `CIERRE_PHOTO` | 9 · Cierre | 1 foto de fondo a toda la lámina |
 
-**Total: 16 fotos.** Las 12 de la portada llenan los dos rieles del corredor —
-ambos recorren la misma secuencia, así que no hacen falta 24. El slide 1 deriva
+**Total: 9 fotos.** Las 6 de la portada llenan los dos rieles del corredor —
+ambos recorren la misma secuencia, así que no hacen falta 12. El slide 1 deriva
 su número de tarjetas de `COVER_PHOTOS.length`, de modo que si agregas o quitas
 entradas la densidad del corredor se ajusta sola y ninguna foto queda sin usar.
 
@@ -82,6 +81,38 @@ cualquier foto —clara, oscura, cálida— acaba leyéndose azul.
 El logo de la portada no pasa por el manifiesto: es
 `public/logo-rac-blanco.webp` (blanco con transparencia), referenciado directo
 en `01-cover.tsx`.
+
+## El video del slide 2
+
+El slide 2 es el video institucional a sangre, sin texto encima. Se sirve desde
+`public/video/rac-2026.mp4` y arranca solo al entrar a la lámina.
+
+El master (1080p, ~96 MB) vive en la raíz del repo y está en `.gitignore`: lo que
+se publica es una copia comprimida de ~23 MB, porque **Cloudflare Pages rechaza
+archivos de más de 25 MiB**. Para regenerarla desde un master nuevo:
+
+```sh
+ffmpeg -y -i "master.mp4" -c:v libx264 -preset veryslow -b:v 1150k -pass 1 \
+  -pix_fmt yuv420p -g 48 -an -f null /dev/null
+ffmpeg -y -i "master.mp4" -c:v libx264 -preset veryslow -b:v 1150k -pass 2 \
+  -pix_fmt yuv420p -g 48 -c:a aac -b:a 96k -movflags +faststart \
+  public/video/rac-2026.mp4
+```
+
+Dos pasadas y no un `-crf` suelto porque aquí el que manda es el tamaño: el
+límite de Pages es duro y un CRF no garantiza dónde cae el archivo. `1150k` de
+video + `96k` de audio dan ~23 MB para los 2:26 del corte actual; si cambia la
+duración, ajusta el bitrate a `184000 / segundos` kbps para quedarte en ese
+presupuesto. `+faststart` mueve el índice al principio, que es lo que deja
+empezar a reproducir sin bajar el archivo completo.
+
+El deck empieza a bajarlo desde la portada (`videoSrc` en `src/data/slides.ts`),
+así que para cuando avanzas ya está en caché. Aun así, **abre el deck una vez con
+internet antes de la sala**, como con la tipografía.
+
+Arranca con sonido. Si el navegador lo bloquea —pasa sólo al abrir `#2` en frío,
+sin haber hecho clic ni tocado una tecla— cae a mudo en vez de quedarse en el
+primer cuadro.
 
 ## Estructura
 

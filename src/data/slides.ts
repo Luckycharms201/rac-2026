@@ -1,13 +1,14 @@
 import type { ComponentType } from "react";
 
 import Cover from "@/components/deck/slides/01-cover";
-import QueEs from "@/components/deck/slides/02-que-es";
-import Fechas from "@/components/deck/slides/03-fechas";
-import Retroalimentacion from "@/components/deck/slides/04-retroalimentacion";
-import Momentos from "@/components/deck/slides/05-momentos";
-import Propuesta from "@/components/deck/slides/06-propuesta";
-import Agenda from "@/components/deck/slides/07-agenda";
-import Cierre from "@/components/deck/slides/08-cierre";
+import Video, { VIDEO_SRC } from "@/components/deck/slides/02-video";
+import QueEs from "@/components/deck/slides/03-que-es";
+import Fechas from "@/components/deck/slides/04-fechas";
+import Retroalimentacion from "@/components/deck/slides/05-retroalimentacion";
+import Momentos from "@/components/deck/slides/06-momentos";
+import Propuesta from "@/components/deck/slides/07-propuesta";
+import Agenda from "@/components/deck/slides/08-agenda";
+import Cierre from "@/components/deck/slides/09-cierre";
 
 import {
   CIERRE_PHOTO,
@@ -23,6 +24,8 @@ export type SlideEntry = {
   title: string;
   /** Fotos que usa el slide, para precargarlas desde el anterior. */
   photoIds: string[];
+  /** Video del slide, si lo hay: se empieza a bajar desde el slide anterior. */
+  videoSrc?: string;
   Component: ComponentType;
 };
 
@@ -35,6 +38,13 @@ export const SLIDES: SlideEntry[] = [
     title: "Regreso a Casa 2026",
     photoIds: ids(COVER_PHOTOS),
     Component: Cover,
+  },
+  {
+    id: "video",
+    title: "Video Regreso a Casa",
+    photoIds: [],
+    videoSrc: VIDEO_SRC,
+    Component: Video,
   },
   {
     id: "que-es",

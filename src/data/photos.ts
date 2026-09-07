@@ -45,7 +45,7 @@ export const COVER_PHOTOS: Photo[] = [
 /* ── Slides 2 y 4: foto protagonista, a altura completa ───────── */
 export const QUE_ES_PHOTO: Photo = {
   id: "que-es-principal",
-  label: "Egresadas posando frente a las letras iluminadas",
+  label: "Egresados posando con el letrero EXATEC en el campus",
   ratio: "4/5",
   src: "/photos/que-es-principal.webp",
 };

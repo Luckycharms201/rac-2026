@@ -152,3 +152,64 @@
  * el corredor de la portada necesita *pausarse* a media animación (no
  * colapsar a duración cero), y las transiciones del deck se apagan desde
  * framer-motion con useReducedMotion(). */
+
+/* ──────────────────────────────────────────────────────────────────────
+ * Modo impresión (`?print=1`).
+ *
+ * Página de 13.333 × 7.5 pulgadas: el 16:9 estándar de una presentación,
+ * el mismo de PowerPoint. A 96 dpi son los 1280 × 720 px que mide cada
+ * escenario de la hoja, así que la lámina llena la página exacta y no
+ * queda ni margen ni recorte.
+ * ────────────────────────────────────────────────────────────────────── */
+
+@page {
+  size: 13.333in 7.5in;
+  margin: 0;
+}
+
+/* La hoja necesita scroll; el deck normal lo tiene bloqueado. */
+html:has(.rac-print-sheet),
+html:has(.rac-print-sheet) body {
+  overflow: auto;
+  height: auto;
+}
+
+.rac-print-sheet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+  background-color: #000;
+}
+
+.rac-print-page {
+  break-after: page;
+  page-break-after: always;
+}
+
+.rac-print-page:last-child {
+  break-after: auto;
+  page-break-after: auto;
+}
+
+@media print {
+  html:has(.rac-print-sheet),
+  html:has(.rac-print-sheet) body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+  }
+
+  .rac-print-sheet {
+    gap: 0;
+    padding: 0;
+  }
+
+  /* Sin esto Chrome tira los fondos y las láminas salen en blanco. */
+  .rac-print-page,
+  .rac-print-page * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

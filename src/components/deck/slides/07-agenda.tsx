@@ -10,7 +10,7 @@ const FILAS = [
       "Explicarles cómo pueden participar (socio formador, mentoría, proyectos, vinculación profesional o empresarial, etc.)",
     minutos: 7,
   },
-  { actividad: "Cierre + QR para quien quiera vincularse", minutos: 3 },
+  { actividad: "Cierre + QR / Call to Action", minutos: 3 },
 ];
 
 const MAX_MINUTOS = Math.max(...FILAS.map((f) => f.minutos));

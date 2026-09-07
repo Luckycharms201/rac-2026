@@ -15,27 +15,27 @@ const BLOQUES: { titulo: string; cuerpo: ReactNode }[] = [
   {
     titulo: "¿Qué es?",
     cuerpo:
-      "Un espacio para que el egresado conozca cómo ha evolucionado su carrera y descubra cómo puede volver a participar hoy con su Escuela y con el Tec.",
+      "Un espacio para que nuestros egresados conozcan cómo ha evolucionado su carrera y las formas en las que hoy pueden volver a vincularse con su Escuela y con el Tec.",
   },
   {
     titulo: "¿Cuál es el objetivo?",
     cuerpo: (
       <>
-        Buscamos que al terminar este espacio cada egresado pueda responder
-        estas preguntas:{" "}
-        <em className="italic text-white">
-          ¿Cómo ha evolucionado mi carrera desde que me gradué?
-        </em>{" "}
-        <em className="italic text-white">
-          ¿Cómo puedo volver a participar hoy con mi Escuela y con el Tec?
-        </em>
+        Que al terminar este espacio el egresado pueda responder dos preguntas:
+        {/* Apiladas, no seguidas dentro del párrafo: son las dos preguntas que
+         * el bloque promete, y en línea corrida se leen como una sola frase
+         * larga en la que la segunda se pierde. */}
+        <span className="mt-[1.4cqh] flex flex-col gap-[0.7cqh] italic text-white">
+          <span>¿Cómo ha evolucionado mi carrera desde que me gradué?</span>
+          <span>¿Cómo puedo participar hoy con mi Escuela y con el Tec?</span>
+        </span>
       </>
     ),
   },
   {
     titulo: "¿En qué momento sucederá?",
     cuerpo:
-      "Entre el desayuno y el tour queremos abrir un espacio de 20 minutos por Escuela y/o carrera.",
+      "Entre el desayuno y el tour, abrir un espacio de 20 minutos por Escuela y/o carrera. Cada egresado podrá elegir la Escuela de su interés, independientemente de la carrera que haya estudiado.",
   },
 ];
 

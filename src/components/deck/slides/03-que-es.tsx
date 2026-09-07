@@ -50,11 +50,11 @@ export function QueEs() {
 
           <RevealItem className="mt-[4cqh]">
             <Lead className="text-[clamp(.8rem,1.6cqw,1.65rem)]">
-              Regreso a Casa es la experiencia de reencuentro de Campus Monterrey
-              para celebrar los aniversarios de graduación de nuestros egresados.
-              Busca que vuelvan a su alma mater, se reencuentren con su
-              generación, conozcan la transformación del Tec y fortalezcan su
-              vínculo con la institución.
+              Regreso a Casa es una experiencia de reencuentro para celebrar los
+              aniversarios de graduación de nuestros egresados. Es un espacio
+              para volver a su alma mater, reencontrarse con su generación,
+              conocer la transformación del Tec y fortalecer su vínculo con la
+              institución.
             </Lead>
           </RevealItem>
         </Reveal>

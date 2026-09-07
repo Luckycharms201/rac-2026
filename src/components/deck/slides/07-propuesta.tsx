@@ -15,7 +15,7 @@ const BLOQUES: { titulo: string; cuerpo: ReactNode }[] = [
   {
     titulo: "¿Qué es?",
     cuerpo:
-      "Un espacio para que nuestros egresados conozcan cómo ha evolucionado su carrera y las formas en las que hoy pueden volver a vincularse con su Escuela y con el Tec.",
+      "Un espacio para que nuestros egresados conozcan cómo ha evolucionado su carrera y las formas en que hoy pueden volver a vincularse con su Escuela y con el Tec.",
   },
   {
     titulo: "¿Cuál es el objetivo?",
@@ -35,7 +35,7 @@ const BLOQUES: { titulo: string; cuerpo: ReactNode }[] = [
   {
     titulo: "¿En qué momento sucederá?",
     cuerpo:
-      "Entre el desayuno y el tour, abrir un espacio de 20 minutos por Escuela y/o carrera. Cada egresado podrá elegir la Escuela de su interés, independientemente de la carrera que haya estudiado.",
+      "Entre el desayuno y el tour, tendremos un espacio de 20 minutos por Escuela y/o carrera. Cada egresado podrá elegir la Escuela de su interés, independientemente de la carrera que haya estudiado.",
   },
 ];
 

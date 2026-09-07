@@ -1,0 +1,10 @@
+# Reglas de cabeceras de Cloudflare Pages (Vite copia este archivo tal cual a
+# dist/, que es donde Pages lo lee).
+#
+# Por default Pages marca todo como `max-age=0, must-revalidate`: cada carga
+# del deck vuelve a pedir los 23 MB del video. Un día de caché cubre el caso
+# real —probar la presentación en la mañana y proyectarla en la tarde— sin
+# volverse una trampa: si cambias el corte y no ves el nuevo, recarga con
+# Shift, o renombra el archivo y ya.
+/video/*
+  Cache-Control: public, max-age=86400

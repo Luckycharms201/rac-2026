@@ -106,13 +106,31 @@ duración, ajusta el bitrate a `184000 / segundos` kbps para quedarte en ese
 presupuesto. `+faststart` mueve el índice al principio, que es lo que deja
 empezar a reproducir sin bajar el archivo completo.
 
-El deck empieza a bajarlo desde la portada (`videoSrc` en `src/data/slides.ts`),
-así que para cuando avanzas ya está en caché. Aun así, **abre el deck una vez con
-internet antes de la sala**, como con la tipografía.
+### Por qué el video se baja con `fetch` y no con el `<video>`
+
+Cloudflare Pages **no responde a peticiones `Range`**: pídele un pedazo del
+archivo y contesta `200` con los 23 MB enteros, sin `accept-ranges`. Con eso el
+elemento `<video>` no arranca. Medido en un Chrome limpio contra producción:
+`readyState 0` y `buffered 0` **quince segundos** después de entrar al slide,
+mientras el mismo archivo servido por Vite —que sí contesta `206`— carga en 6 ms.
+
+Por eso `src/lib/video-preload.ts` baja el archivo con `fetch`, lo guarda como
+blob y le pasa al `<video>` una URL de blob. Un blob ya está en memoria: no hay
+`Range` que negociar ni revalidación que esperar, y `play()` arranca en el primer
+cuadro. La descarga empieza desde la portada (`videoSrc` en `src/data/slides.ts`),
+así que para cuando avanzas ya está lista.
+
+Mientras el archivo baja se ve `rac-2026-poster.webp`, que es el primer cuadro del
+video: si la descarga no acabó no hay hueco negro, y cuando entra la reproducción
+el cambio no se nota. Si el `fetch` falla, el slide cae a la URL de red.
+
+`public/_headers` le da un día de caché al video —Pages por default manda
+`max-age=0, must-revalidate` y lo vuelve a pedir en cada carga—. Si cambias el
+corte y sigues viendo el viejo, recarga con Shift o renombra el archivo.
 
 Arranca con sonido. Si el navegador lo bloquea —pasa sólo al abrir `#2` en frío,
 sin haber hecho clic ni tocado una tecla— cae a mudo en vez de quedarse en el
-primer cuadro.
+póster.
 
 ## Estructura
 

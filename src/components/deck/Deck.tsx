@@ -6,6 +6,7 @@ import {
   slideTransitionReduced,
 } from "@/components/deck/motion-variants";
 import { photoSources } from "@/data/photos";
+import { preloadVideo } from "@/lib/video-preload";
 import type { SlideEntry } from "@/data/slides";
 
 /* ── el motor ─────────────────────────────────────────────────────
@@ -36,22 +37,6 @@ function isEditableTarget(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false;
   if (target.isContentEditable) return true;
   return /^(input|textarea|select|button)$/i.test(target.tagName);
-}
-
-/* El elemento vive en este mapa —fuera del componente— a propósito: si sólo
- * lo tuviera una variable local, el recolector puede llevárselo a media
- * descarga y la precarga se pierde. Los bytes acaban en la caché del
- * navegador, que es de donde los toma el `<video>` real del slide. */
-const prefetchedVideos = new Map<string, HTMLVideoElement>();
-
-function prefetchVideo(src: string): void {
-  if (prefetchedVideos.has(src)) return;
-  const video = document.createElement("video");
-  video.preload = "auto";
-  video.muted = true;
-  video.src = src;
-  prefetchedVideos.set(src, video);
-  video.load();
 }
 
 function slideFromHash(total: number): number {
@@ -176,7 +161,8 @@ export function Deck({ slides }: DeckProps) {
    * y no cruzan la red. El video pesa lo que pesan todas las fotos juntas
    * varias veces, así que empezar a bajarlo un slide antes es la
    * diferencia entre que arranque solo y que se quede pensando en la
-   * sala. */
+   * sala. Va por `fetch` a un blob y no por la caché del navegador: el
+   * porqué está en `video-preload.ts`. */
   React.useEffect(() => {
     const upcoming = slides[index + 1];
     if (!upcoming) return;
@@ -185,7 +171,7 @@ export function Deck({ slides }: DeckProps) {
       img.decoding = "async";
       img.src = src;
     }
-    if (upcoming.videoSrc) prefetchVideo(upcoming.videoSrc);
+    if (upcoming.videoSrc) void preloadVideo(upcoming.videoSrc).catch(() => {});
   }, [index, slides]);
 
   /* ── cursor: se esconde tras 3 s sin mover el mouse ── */

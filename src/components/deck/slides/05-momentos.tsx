@@ -27,7 +27,7 @@ const DIAS: { titulo: string; momentos: Momento[] }[] = [
 ];
 
 /**
- * Slide 6 — Momentos clave.
+ * Slide 5 — Momentos clave.
  * Sin fotos: las dos tarjetas son sólo el programa. Con el hueco que dejó
  * la foto, la lista crece y se centra en vertical — dejarla arriba con el
  * tamaño de antes habría hecho ver las tarjetas vacías.

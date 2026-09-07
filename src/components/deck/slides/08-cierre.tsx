@@ -4,7 +4,7 @@ import { Photo } from "@/components/ui/photo";
 import { CIERRE_PHOTO } from "@/data/photos";
 
 /**
- * Slide 9 — Cierre.
+ * Slide 8 — Cierre.
  * Una sola foto a toda la lámina, con el degradado del deck encima como
  * overlay de color. El overlay es opaco a propósito: el texto tiene que
  * leerse encima de la foto sea clara u oscura.

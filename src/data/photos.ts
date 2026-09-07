@@ -42,19 +42,12 @@ export const COVER_PHOTOS: Photo[] = [
     ratio: "3/4", src: "/photos/cover-06.webp" },
 ];
 
-/* ── Slides 2 y 3: foto protagonista, a altura completa ───────── */
+/* ── Slides 2 y 4: foto protagonista, a altura completa ───────── */
 export const QUE_ES_PHOTO: Photo = {
   id: "que-es-principal",
   label: "Egresadas posando frente a las letras iluminadas",
   ratio: "4/5",
   src: "/photos/que-es-principal.webp",
-};
-
-export const PROPOSITO_PHOTO: Photo = {
-  id: "proposito-principal",
-  label: "Egresados escuchando una charla en el auditorio",
-  ratio: "4/5",
-  src: "/photos/proposito-principal.webp",
 };
 
 export const RETRO_PHOTO: Photo = {
@@ -79,7 +72,6 @@ export const CIERRE_PHOTO: Photo = {
 export const PHOTOS: readonly Photo[] = [
   ...COVER_PHOTOS,
   QUE_ES_PHOTO,
-  PROPOSITO_PHOTO,
   RETRO_PHOTO,
   CIERRE_PHOTO,
 ];

@@ -9,7 +9,7 @@ const FILAS = [
 ];
 
 /**
- * Slide 4 — Fechas RAC 2026.
+ * Slide 3 — Fechas RAC 2026.
  * El único slide claro del deck: el corte contra los oscuros es lo que
  * hace que las fechas se lean como el dato duro de la presentación.
  */

@@ -16,7 +16,7 @@ const FILAS = [
 const MAX_MINUTOS = Math.max(...FILAS.map((f) => f.minutos));
 
 /**
- * Slide 8 — Propuesta de Agenda y Contenido.
+ * Slide 7 — Propuesta de Agenda y Contenido.
  * La barra proporcional al tiempo hace legible el ritmo del bloque de
  * un vistazo: dos extremos cortos y dos bloques largos en medio.
  */

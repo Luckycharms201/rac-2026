@@ -2,18 +2,16 @@ import type { ComponentType } from "react";
 
 import Cover from "@/components/deck/slides/01-cover";
 import QueEs from "@/components/deck/slides/02-que-es";
-import Proposito from "@/components/deck/slides/03-proposito";
-import Fechas from "@/components/deck/slides/04-fechas";
-import Retroalimentacion from "@/components/deck/slides/05-retroalimentacion";
-import Momentos from "@/components/deck/slides/06-momentos";
-import Propuesta from "@/components/deck/slides/07-propuesta";
-import Agenda from "@/components/deck/slides/08-agenda";
-import Cierre from "@/components/deck/slides/09-cierre";
+import Fechas from "@/components/deck/slides/03-fechas";
+import Retroalimentacion from "@/components/deck/slides/04-retroalimentacion";
+import Momentos from "@/components/deck/slides/05-momentos";
+import Propuesta from "@/components/deck/slides/06-propuesta";
+import Agenda from "@/components/deck/slides/07-agenda";
+import Cierre from "@/components/deck/slides/08-cierre";
 
 import {
   CIERRE_PHOTO,
   COVER_PHOTOS,
-  PROPOSITO_PHOTO,
   QUE_ES_PHOTO,
   RETRO_PHOTO,
 } from "@/data/photos";
@@ -43,12 +41,6 @@ export const SLIDES: SlideEntry[] = [
     title: "Regreso a Casa",
     photoIds: [QUE_ES_PHOTO.id],
     Component: QueEs,
-  },
-  {
-    id: "proposito",
-    title: "Propósito",
-    photoIds: [PROPOSITO_PHOTO.id],
-    Component: Proposito,
   },
   {
     id: "fechas",

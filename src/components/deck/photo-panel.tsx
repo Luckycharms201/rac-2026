@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { SHOT } from "@/lib/print";
 import { EASE } from "@/components/deck/motion-variants";
 import { Photo } from "@/components/ui/photo";
 
@@ -35,7 +36,7 @@ export function PhotoPanel({
 
   return (
     <motion.div
-      initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 1.05 }}
+      initial={SHOT ? false : reduced ? { opacity: 0 } : { opacity: 0, scale: 1.05 }}
       animate={reduced ? { opacity: 1 } : { opacity: 1, scale: 1 }}
       transition={{
         duration: reduced ? 0.25 : 0.95,

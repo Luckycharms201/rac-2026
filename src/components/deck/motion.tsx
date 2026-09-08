@@ -1,6 +1,7 @@
 import type * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { SHOT } from "@/lib/print";
 import {
   revealContainer,
   revealItem,
@@ -25,7 +26,9 @@ export function Reveal({
   const reduced = useReducedMotion();
   return (
     <motion.div
-      initial="hidden"
+      /* En modo captura la cascada nace terminada: si no, el screenshot
+       * agarra la lámina a media entrada. */
+      initial={SHOT ? false : "hidden"}
       animate="show"
       variants={revealContainer(reduced ? 0.03 : stagger, reduced ? 0 : delay)}
       className={className}

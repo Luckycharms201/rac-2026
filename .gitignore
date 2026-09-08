@@ -32,3 +32,5 @@ dist-ssr
 /*.mp4
 
 Regreso-a-Casa-2026.pdf
+/PDF/
+.pdf-frames/

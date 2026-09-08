@@ -1,16 +1,15 @@
 /**
- * Modo impresión: `?print=1` en la URL.
+ * Modos de exportación.
  *
- * En vez de un slide a la vez sobre el viewport, dibuja los diez uno tras
- * otro a tamaño fijo, cada uno en su propia página. De ahí sale el PDF,
- * con Cmd+P → Guardar como PDF o con `npm run pdf`.
+ * `?shot=1` dibuja UN slide —el del hash— llenando el viewport, sin HUD y
+ * sin animación de entrada: el estado final, listo para capturar. De ahí
+ * sale el PDF (`npm run pdf`), una captura por lámina.
+ *
+ * No se exporta con la impresión de Chrome a propósito. Estas láminas
+ * llevan grano, viñeta, mix-blend y backdrop-blur, y con eso el motor de
+ * impresión rasteriza la página completa a la resolución del papel: el
+ * texto sale suave. Capturando el viewport a 2x el pixel es real.
  */
-export const PRINT =
+export const SHOT =
   typeof window !== "undefined" &&
-  new URLSearchParams(window.location.search).has("print");
-
-/**
- * Página de 13.333 × 7.5 pulgadas: el 16:9 estándar de una presentación,
- * el mismo que usa PowerPoint. A 96 dpi son 1280 × 720 px.
- */
-export const PAGE = { width: 1280, height: 720 } as const;
+  new URLSearchParams(window.location.search).has("shot");

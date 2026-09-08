@@ -8,6 +8,7 @@ import {
 import { photoSources } from "@/data/photos";
 import { preloadVideo } from "@/lib/video-preload";
 import type { SlideEntry } from "@/data/slides";
+import { SHOT } from "@/lib/print";
 
 /* ── el motor ─────────────────────────────────────────────────────
  * Un slide a la vez, avance lineal, sin wrap-around: en una sala uno
@@ -164,6 +165,8 @@ export function Deck({ slides }: DeckProps) {
    * sala. Va por `fetch` a un blob y no por la caché del navegador: el
    * porqué está en `video-preload.ts`. */
   React.useEffect(() => {
+    /* En modo captura no hay “siguiente”: se dibuja una sola lámina. */
+    if (SHOT) return;
     const upcoming = slides[index + 1];
     if (!upcoming) return;
     for (const src of photoSources(upcoming.photoIds)) {
@@ -230,7 +233,9 @@ export function Deck({ slides }: DeckProps) {
               <motion.div
                 key={current.id}
                 variants={variants}
-                initial="enter"
+                /* En modo captura la lámina nace ya puesta: no hay que
+                 * cronometrar la cascada de entrada para el screenshot. */
+                initial={SHOT ? false : "enter"}
                 animate="center"
                 exit="exit"
                 className="absolute inset-0"
@@ -242,12 +247,14 @@ export function Deck({ slides }: DeckProps) {
           </AnimatePresence>
         </div>
 
-        <Hud
-          index={index}
-          total={total}
-          showHint={showHint}
-          title={current?.title ?? ""}
-        />
+        {SHOT ? null : (
+          <Hud
+            index={index}
+            total={total}
+            showHint={showHint}
+            title={current?.title ?? ""}
+          />
+        )}
       </div>
     </div>
   );

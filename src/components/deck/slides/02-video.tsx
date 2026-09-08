@@ -1,6 +1,7 @@
 import * as React from "react";
 import { SlideShell } from "@/components/deck/SlideShell";
 import { preloadVideo } from "@/lib/video-preload";
+import { SHOT } from "@/lib/print";
 
 /** El master de 96 MB vive en la raíz del repo; esto es la copia servida. */
 export const VIDEO_SRC = "/video/rac-2026.mp4";
@@ -29,6 +30,10 @@ export function Video() {
   const ref = React.useRef<HTMLVideoElement>(null);
 
   React.useEffect(() => {
+    /* En modo captura el video no se baja: la lámina del PDF es el póster
+     * —el primer cuadro— y así el export no espera 23 MB ni atrapa un
+     * fotograma cualquiera a media reproducción. */
+    if (SHOT) return;
     let alive = true;
     preloadVideo(VIDEO_SRC).then(
       (blobUrl) => {
